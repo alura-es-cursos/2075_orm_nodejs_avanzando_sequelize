@@ -11,6 +11,11 @@ class PersonaServices extends Services {
 
     return listaMatriculas;
   }
+
+  async consultaTodasLasPersonas() {
+    const listaRegistros = await super.consultaPorAmbito('todosLosRegistros');
+    return listaRegistros;
+  }
 }
 
 module.exports = PersonaServices;

@@ -10,7 +10,7 @@ class Controller {
       return res.status(200).json(listaRegistros);
     } catch(error) {
       //
-      return res.status(500).json(error);
+      return res.status(500).json({msg:error.message});
     }
     
   }
@@ -21,7 +21,7 @@ class Controller {
       const registro = await this.service.consultaPorId(Number(id));
       return res.status(200).json(registro);
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({msg:error.message});
     }
   }
 
@@ -31,7 +31,7 @@ class Controller {
       const nuevoRegistro = await this.service.crearRegistro(datosRegistro);
       return res.status(200).json(nuevoRegistro);
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({msg:error.message});
     }
   } 
 
@@ -48,7 +48,7 @@ class Controller {
         return res.status(400).json({mensaje: 'Registro no encontrado'});
       }
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({msg:error.message});
     }
   }
 
@@ -58,7 +58,7 @@ class Controller {
       await this.service.borrarRegistro(Number(id));
       return res.status(200).json({ mensaje: `id ${id} borrado` });
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({msg:error.message});
     }
   }
 }

@@ -1,10 +1,10 @@
 # Requerimientos del proyecto
 
-- Al cliente no le gustaría que registros importantes del sistema, como Personas, se eliminen permanentemente de la base de datos.
+OK - Al cliente no le gustaría que registros importantes del sistema, como Personas, se eliminen permanentemente de la base de datos.
 
-- Para que la interfaz sea más limpia, al cliente le gustaría que solo los usuarios activos se mostraran en la lista de Personas de forma predeterminada.
+OK - Para que la interfaz sea más limpia, al cliente le gustaría que solo los usuarios activos se mostraran en la lista de Personas de forma predeterminada.
 
-- El front-end notó algunas fallas de validación de formularios, lo que resultó en datos de correo electrónico no válidos en el banco. Es deseable que esta validación no sea responsabilidad exclusiva del frente.
+- El front-end notó algunas fallas de validación de formularios, lo que resultó en datos de correo electrónico no válidos en el banco. Es deseable que esta validación no sea responsabilidad exclusiva del front.
 
 - Es importante poder consultar rápidamente todas las inscripciones confirmadas del alumno X.
 

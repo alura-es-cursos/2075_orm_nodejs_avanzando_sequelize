@@ -10,6 +10,10 @@ router.get('/personas', (req, res) => {
   personaController.consultaTodos(req, res);
 });
 
+router.get('/personas/todos', (req, res) => {
+  personaController.consultaTodasLasPersonas(req, res);
+});
+
 router.get('/personas/:id', (req, res) => {
   personaController.consultaPorId(req, res);
 });

@@ -15,7 +15,16 @@ class PersonaController extends Controller {
       res.status(200).json(listaMatriculas);
 
     } catch(error) {
-      res.status(500).json(error);
+      return res.status(500).json({msg:error.message});
+    }
+  }
+
+  async consultaTodasLasPersonas(req, res) {
+    try {
+      const listaPersonas = await personaServices.consultaTodasLasPersonas();
+      res.status(200).json(listaPersonas);
+    } catch(error) {
+      return res.status(500).json({msg:error.message});
     }
   }
 }

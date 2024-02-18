@@ -9,6 +9,10 @@ class Services {
     return db[this.model].findAll();
   }
 
+  async consultaPorAmbito(nombreAmbito) {
+    return db[this.model].scope(nombreAmbito).findAll();
+  }
+
   async consultaPorId(id) {
     return db[this.model].findByPk(id);
   }
