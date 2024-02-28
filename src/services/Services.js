@@ -17,12 +17,18 @@ class Services {
     return db[this.model].findByPk(id);
   }
 
+  async consultaUnRegistro(where) {
+    return db[this.model].findOne({ where: {...where} });
+  }
+
   async crearRegistro(datosDelRegistro) {
     return db[this.model].create(datosDelRegistro);
   }
 
-  async actualizarRegistro(datosDelRegistro, id) {
-    const resultadoOperacion = await db[this.model].update(datosDelRegistro, { where: { id: id } });
+  async actualizarRegistro(datosDelRegistro, where) {
+    const resultadoOperacion = await db[this.model].update(datosDelRegistro, 
+      { where: {...where } 
+      });
 
     if (resultadoOperacion[0] === 0)
       return false;

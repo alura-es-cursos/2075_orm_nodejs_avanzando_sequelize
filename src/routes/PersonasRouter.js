@@ -30,12 +30,28 @@ router.delete('/personas/:id', (req, res) => {
   personaController.borrarRegistro(req, res);
 });
 
-router.get('/personas/:id/matriculas', (req, res) => { 
-  personaController.consultaMatriculas(req, res);
+router.get('/personas/:estudiante_id/matriculas', (req, res) => { 
+  personaController.consultaMatriculasActivas(req, res);
 });
 
-router.post('/personas/:id/matriculas', (req, res) => { 
+router.get('/personas/:estudiante_id/matriculas/todas', (req, res) => { 
+  personaController.consultaTodasLasMatriculas(req, res);
+});
+
+router.get('/personas/:estudiante_id/matriculas/:id', (req, res) => { 
+  matriculaController.consultaUnRegistro(req, res);
+});
+
+router.post('/personas/:estudiante_id/matriculas', (req, res) => { 
   matriculaController.crearRegistro(req, res);
+});
+
+router.put('/personas/:estudiante_id/matriculas/:id', (req, res) => { 
+  matriculaController.actualizarRegistro(req, res);
+});
+
+router.delete('/personas/:estudiante_id/matriculas/:id', (req, res) => { 
+  matriculaController.borrarRegistro(req, res);
 });
 
 module.exports = router;

@@ -5,9 +5,16 @@ class PersonaServices extends Services {
     super('Persona');
   }
 
-  async consultaMatriculasEstudiante(id) {
+  async consultaMatriculasActivasEstudiante(id) {
     const estudianteModel = await super.consultaPorId(id);
     const listaMatriculas = await estudianteModel.getCursosMatriculados();
+
+    return listaMatriculas;
+  }
+
+  async consultaTodasLasMatriculas(id) {
+    const estudianteModel = await super.consultaPorId(id);
+    const listaMatriculas = await estudianteModel.getTodasLasMatriculas();
 
     return listaMatriculas;
   }

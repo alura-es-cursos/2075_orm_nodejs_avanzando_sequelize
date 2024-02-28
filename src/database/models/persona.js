@@ -15,6 +15,15 @@ module.exports = (sequelize, DataTypes) => {
       Persona.hasMany(models.Matricula, {
         foreignKey: 'estudiante_id',
         as: 'cursosMatriculados',
+        scope: {
+          status: 'matriculado'
+        }
+      });
+
+      Persona.hasMany(models.Matricula, {
+        foreignKey: 'estudiante_id',
+        as: 'todasLasMatriculas',
+        
       });
     }
   }
@@ -35,7 +44,8 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: 'El formato del email no es válido',
         }
-      }
+      },
+
     },
     dni: {
       type:DataTypes.STRING,

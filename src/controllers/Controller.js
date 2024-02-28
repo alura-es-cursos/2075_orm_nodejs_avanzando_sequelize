@@ -1,3 +1,5 @@
+const conversor = require('../helpers/convertirParametrosRutas.js');
+
 class Controller {
   constructor(service){
     this.service = service;
@@ -25,6 +27,17 @@ class Controller {
     }
   }
 
+  async consultaUnRegistro(req, res) {
+    const { ...params } = req.params;
+    const where = conversor(params);
+    try {
+      const registro = await this.service.consultaUnRegistro(where);
+      return res.status(200).json(registro);
+    } catch (error) {
+      return res.status(500).json({msg:error.message});
+    }
+  }
+
   async crearRegistro(req, res) {
     const datosRegistro = req.body;
     try {
@@ -37,13 +50,14 @@ class Controller {
 
   async actualizarRegistro(req, res) {
     const datosRegistroActualizado = req.body;
-    const { id } = req.params;
+    const { ...params } = req.params;
+    const where = conversor(params);
 
     try {
-      const isUpdate = await this.service.actualizarRegistro(datosRegistroActualizado, id);
+      const isUpdate = await this.service.actualizarRegistro(datosRegistroActualizado, where);
 
       if (isUpdate) {
-        return res.status(200).json({mensaje: `Id ${id} actualizado correctamente`});
+        return res.status(200).json({mensaje: 'Registro actualizado correctamente'});
       } else {
         return res.status(400).json({mensaje: 'Registro no encontrado'});
       }

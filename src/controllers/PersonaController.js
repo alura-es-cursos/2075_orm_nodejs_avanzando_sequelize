@@ -8,10 +8,21 @@ class PersonaController extends Controller {
     super(personaServices);
   }
 
-  async consultaMatriculas(req, res) {
-    const { id } = req.params;
+  async consultaMatriculasActivas(req, res) {
+    const { estudiante_id } = req.params;
     try {
-      const listaMatriculas = await personaServices.consultaMatriculasEstudiante(id);
+      const listaMatriculas = await personaServices.consultaMatriculasActivasEstudiante(estudiante_id);
+      res.status(200).json(listaMatriculas);
+
+    } catch(error) {
+      return res.status(500).json({msg:error.message});
+    }
+  }
+
+  async consultaTodasLasMatriculas(req, res) {
+    const { estudiante_id } = req.params;
+    try {
+      const listaMatriculas = await personaServices.consultaTodasLasMatriculas(estudiante_id);
       res.status(200).json(listaMatriculas);
 
     } catch(error) {
