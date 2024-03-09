@@ -5,8 +5,8 @@ class Services {
     this.model = modelName;
   }
 
-  async consultaTodos() {
-    return db[this.model].findAll();
+  async consultaTodos(where = {}) {
+    return db[this.model].findAll({ where: {...where}});
   }
 
   async consultaPorAmbito(nombreAmbito) {
@@ -19,6 +19,10 @@ class Services {
 
   async consultaUnRegistro(where) {
     return db[this.model].findOne({ where: {...where} });
+  }
+
+  async consultaYCuentaRegistros(options) {
+    return db[this.model].findAndCountAll({...options});
   }
 
   async crearRegistro(datosDelRegistro) {

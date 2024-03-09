@@ -5,7 +5,7 @@ const cursoController = new CursoController();
 const router = Router();
 
 router.get('/cursos', (req, res) => {
-  cursoController.consultaTodos(req, res);
+  cursoController.consultaCursos(req, res);
 });
 
 router.get('/cursos/:id', (req, res) => {

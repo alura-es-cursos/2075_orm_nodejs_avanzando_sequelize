@@ -38,9 +38,18 @@ router.get('/personas/:estudiante_id/matriculas/todas', (req, res) => {
   personaController.consultaTodasLasMatriculas(req, res);
 });
 
+router.get('/personas/:estudiante_id/matriculas/confirmadas', (req, res) => { 
+  matriculaController.consultaMatriculasConfirmadas(req, res);
+});
+
 router.get('/personas/:estudiante_id/matriculas/:id', (req, res) => { 
   matriculaController.consultaUnRegistro(req, res);
 });
+
+router.get('/matriculas/completas', (req, res) => { 
+  matriculaController.consultarCursosCompletos(req, res);
+});
+
 
 router.post('/personas/:estudiante_id/matriculas', (req, res) => { 
   matriculaController.crearRegistro(req, res);
