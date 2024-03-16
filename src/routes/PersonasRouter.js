@@ -26,6 +26,10 @@ router.put('/personas/:id', (req, res) => {
   personaController.actualizarRegistro(req, res);
 });
 
+router.put('/personas/:estudiante_id/desactiva', (req, res) => { 
+  personaController.desactivaEstudianteYMatriculas(req, res);
+});
+
 router.delete('/personas/:id', (req, res) => {
   personaController.borrarRegistro(req, res);
 });

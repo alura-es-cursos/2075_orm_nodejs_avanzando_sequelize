@@ -29,9 +29,11 @@ class Services {
     return db[this.model].create(datosDelRegistro);
   }
 
-  async actualizarRegistro(datosDelRegistro, where) {
+  async actualizarRegistro(datosDelRegistro, where, transaction = {}) {
     const resultadoOperacion = await db[this.model].update(datosDelRegistro, 
-      { where: {...where } 
+      { 
+        where: {...where },
+        transaction: transaction
       });
 
     if (resultadoOperacion[0] === 0)

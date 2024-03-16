@@ -38,6 +38,17 @@ class PersonaController extends Controller {
       return res.status(500).json({msg:error.message});
     }
   }
+
+  async desactivaEstudianteYMatriculas(req, res) {
+    const { estudiante_id } = req.params;
+
+    try {
+      await personaServices.desactivaPersonaYMatriculas(Number(estudiante_id));
+      res.status(200).json({msg: `Matriculas del Estudiante con Id: ${estudiante_id} se desactivaron`});
+    } catch(error) {
+      return res.status(500).json({msg:error.message});
+    }
+  }
 }
 
 module.exports = PersonaController;
